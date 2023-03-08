@@ -18,9 +18,22 @@ mod reqwest_support {
         {
             let mut url = reqwest::Url::parse(method_url.as_ref()).expect("Unable to parse url");
 
-            url.query_pairs_mut().extend_pairs(params);
+            let mut token = None;
+            for (name, value) in params {
+                if *name == "token" {
+                    token = Some(*value);
+                } else {
+                    url.query_pairs_mut().append_pair(name, value);
+                }
+            }
 
-            Ok(self.get(url).send()?.text()?)
+            let mut request = self.get(url);
+
+            if let Some(token) = token {
+                request = request.bearer_auth(token);
+            }
+
+            Ok(request.send()?.text()?)
         }
 
         fn post<S>(
