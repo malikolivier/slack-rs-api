@@ -161,7 +161,7 @@ where
     let params: Vec<(&str, &str)> = params.into_iter().filter_map(|x| x).collect::<Vec<_>>();
     let url = crate::get_slack_url_for_method("/conversations.history");
     client
-        .get(&url, &params[..])
+        .post(&url, &params[..], &[])
         .map_err(HistoryError::Client)
         .and_then(|result| {
             serde_json::from_str::<HistoryResponse>(&result)
