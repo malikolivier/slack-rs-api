@@ -19,13 +19,8 @@ mod reqwest_support {
             let mut url = reqwest::Url::parse(method_url.as_ref()).expect("Unable to parse url");
 
             url.query_pairs_mut().extend_pairs(params);
-            let token = std::env::var("SLACK_TOKEN")
-                .expect("Specify Slack API token with SLACK_TOKEN environment variable");
-            Ok(self
-                .get(url)
-                .header("Authorization", format!("Bearer {token}"))
-                .send()?
-                .text()?)
+
+            Ok(self.get(url).send()?.text()?)
         }
 
         fn post<S>(

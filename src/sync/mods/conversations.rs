@@ -145,6 +145,7 @@ where
         .as_ref()
         .map(|oldest| oldest.to_string().into());
     let params: Vec<Option<(&str, &str)>> = vec![
+        Some(("token", token)),
         Some(("channel", request.channel.as_ref())),
         request
             .cursor
