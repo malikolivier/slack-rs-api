@@ -530,13 +530,13 @@ pub struct ListPrefsInner {
 #[derive(Clone, Debug, Deserialize)]
 pub struct ListUsergroupsInner {
     pub auto_provision: bool,
-    pub auto_type: Vec<String>,
+    pub auto_type: Option<String>,
     pub channel_count: Option<u64>,
     pub created_by: String,
     pub date_create: u64,
     pub date_delete: u64,
     pub date_update: u64,
-    pub deleted_by: Vec<String>,
+    pub deleted_by: Option<String>,
     pub description: String,
     pub enterprise_subteam_id: String,
     pub handle: String,
