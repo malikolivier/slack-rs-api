@@ -48,7 +48,11 @@ mod reqwest_support {
             let url = reqwest::Url::parse(method_url.as_ref()).expect("Unable to parse url");
             let mut req = self.post(url).form(form);
             for (k, v) in headers {
-                req = req.header(*k, *v);
+                if *k == "token" {
+                    req = req.bearer_auth(*v);
+                } else {
+                    req = req.header(*k, *v);
+                }
             }
             Ok(req.send()?.text()?)
         }
