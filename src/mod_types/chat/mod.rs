@@ -1115,7 +1115,7 @@ pub struct PostMessageUserProfileInner {
 pub struct PostMessageMessageInner {
     pub attachments: Option<Vec<PostMessageAttachmentsInner>>,
     pub blocks: Option<Vec<PostMessageBlocksInner>>,
-    pub bot_id: Option<Vec<String>>,
+    pub bot_id: Option<String>,
     pub bot_profile: Option<PostMessageBotProfileInner>,
     pub client_msg_id: Option<String>,
     pub comment: Option<PostMessageCommentInner>,

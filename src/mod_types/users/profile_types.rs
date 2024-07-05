@@ -38,7 +38,7 @@ pub struct GetProfileInner {
     pub display_name: String,
     pub display_name_normalized: String,
     pub email: Option<String>,
-    pub fields: Vec<serde_json::Value>,
+    pub fields: serde_json::Value,
     pub first_name: Option<String>,
     pub guest_expiration_ts: Option<u64>,
     pub guest_invited_by: Option<String>,
