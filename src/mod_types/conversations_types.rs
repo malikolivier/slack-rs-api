@@ -1239,7 +1239,7 @@ pub struct HistoryMessagesInner {
 pub struct HistoryResponse {
     pub callstack: Option<String>,
     pub channel_actions_count: u64,
-    pub channel_actions_ts: Option<Vec<u64>>,
+    pub channel_actions_ts: Option<u64>,
     error: Option<String>,
     pub has_more: bool,
     pub messages: Option<Vec<HistoryMessagesInner>>,
