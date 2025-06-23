@@ -1837,7 +1837,7 @@ impl<E: Error> fmt::Display for UpdateError<E> {
                 write!(f, "Server returned error too_many_attachments")
             }
             UpdateError::UpgradeRequired => write!(f, "Server returned error upgrade_required"),
-            UpdateError::MalformedResponse(_, ref e) => write!(f, "{}", e),
+            UpdateError::MalformedResponse(ref result, ref e) => write!(f, "Unexpected response from Slack API: got '{}'. Parse error: {}", result, e),
             UpdateError::Unknown(ref s) => write!(f, "{}", s),
             UpdateError::Client(ref inner) => write!(f, "{}", inner),
         }
